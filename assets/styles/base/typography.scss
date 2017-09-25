@@ -1,0 +1,37 @@
+html,
+body {
+  color: $black;
+
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  font-weight: $font-weight-base;
+
+  line-height: $line-height-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: inline;
+
+  margin: 0;
+
+  font-size: $font-size-base;
+}
+
+p {
+  display: inline;
+
+  margin: 0;
+}
+
+::selection {
+  background: $white;
+}
+
+::-moz-selection {
+  background: $white;
+}

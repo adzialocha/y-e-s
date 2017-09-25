@@ -1,0 +1,21 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+
+    text-rendering: optimizeLegibility;
+  }
+}
+
+html,
+body {
+  margin: 0;
+}
+
+main,
+article {
+  display: inline;
+}

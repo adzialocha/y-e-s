@@ -1,0 +1,22 @@
+button {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background-color: transparent;
+
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+
+  outline: 0;
+
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+}

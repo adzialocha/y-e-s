@@ -1,0 +1,22 @@
+# your essential settings
+title: Y-E-S
+email: mail@y-e-s.org
+description: Y-E-S is Neo Hülcker, Kaj Duncan David, Stellan Veloce, Andreas Dzialocha, Martin Hiendl
+locales:
+  about: About
+  details: Details
+  download: Download
+  email: Your email address
+  imprint: Imprint
+  setup: Setup
+  subscribe: Subscribe
+
+# setup
+collections:
+  - releases
+
+sass:
+  sass_dir: assets/styles
+  style: compressed
+
+markdown: kramdown

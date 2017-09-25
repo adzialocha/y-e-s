@@ -1,0 +1,8 @@
+a {
+  &,
+  &:active
+  &:hover,
+  &:visited {
+    color: $black;
+  }
+}

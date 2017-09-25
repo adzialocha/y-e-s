@@ -1,0 +1,32 @@
+input {
+  margin: 0;
+  padding: 5px;
+
+  border: 0;
+  border-radius: 0;
+
+  background-color: transparent;
+
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+
+  outline: 0;
+
+  -webkit-appearance: none;
+
+  &::-webkit-input-placeholder {
+    color: $white;
+  }
+
+  &::-moz-placeholder {
+    color: $white;
+  }
+
+  &:-ms-input-placeholder {
+    color: $white;
+  }
+
+  &:-moz-placeholder {
+    color: $white;
+  }
+}

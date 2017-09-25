@@ -1,0 +1,19 @@
+.release {
+  display: none;
+}
+
+.release--visible {
+  display: flex;
+}
+
+.release__details {
+  padding-left: 5px;
+}
+
+.release__download {
+  margin-top: 5px;
+}
+
+.release__cover {
+  width: 200px;
+}

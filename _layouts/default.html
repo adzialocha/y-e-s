@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400i,700i">
+  <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
+</head>
+<body>
+  <div id="gradient" class="gradient"></div>
+  <nav class="navigation">
+    <button class="navigation__item" id="navigation-releases">Y-E-S</button>
+    <button class="navigation__item" id="navigation-subscribe">
+      {{ site.locales.subscribe }}
+    </button>
+    <button class="navigation__item" id="navigation-imprint">
+      {{ site.locales.imprint }}
+    </button>
+  </nav>
+  <aside class="view" id="view-subscribe">
+    <form>
+      <input class="blue blue--left" type="email" name="email" placeholder="{{ site.locales.email }}" />
+      <button class="blue" type="submit">{{ site.locales.subscribe }}</button>
+    </form>
+  </aside>
+  <aside class="view" id="view-imprint">
+    {{ site.description }} - <a href="mailto:{{ site.email }}">
+      {{ site.email }}
+    </a>
+  </aside>
+  <main>
+    {{ content }}
+  </main>
+  <script type="text/javascript" src="/assets/scripts/app.js"></script>
+</body>
+</html>

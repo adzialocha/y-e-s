@@ -1,0 +1,13 @@
+.preview {
+  display: inline;
+}
+
+.preview__catalog {
+  color: $white;
+
+  font-weight: $font-weight-base;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+}
