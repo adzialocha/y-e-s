@@ -5,10 +5,5 @@ y-e-s
 
 ```
 bundle install
-```
-
-## Development
-
-```
 bundle exec jekyll serve
 ```

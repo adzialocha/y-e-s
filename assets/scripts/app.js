@@ -10,6 +10,14 @@ class Color {
   }
 }
 
+function generateComplementaryColor(color) {
+  return new Color(
+    255 - color.red,
+    255 - color.green,
+    255 - color.blue
+  )
+}
+
 const NAVIGATION_ITEMS = [
   'imprint',
   'releases',
@@ -20,12 +28,6 @@ const COLORS = [
   new Color(122, 188, 255),
   new Color(208, 255, 122),
   new Color(188, 122, 255),
-]
-
-const COLORS_TEXT = [
-  new Color(60, 188, 100),
-  new Color(108, 100, 122),
-  new Color(188, 122, 100),
 ]
 
 const ACRONYMS = [
@@ -60,8 +62,14 @@ const previewElements = document.getElementsByClassName('preview__catalog')
 const releaseElements = document.getElementsByClassName('release')
 const viewElements = document.getElementsByClassName('view')
 
-let currentNavigationItem = undefined
-let currentReleaseItem = undefined
+let currentNavigationItem
+let currentReleaseItem
+
+const currentGradient = {
+  colorA: undefined,
+  colorB: undefined,
+  position: 50,
+}
 
 function getRandomArrayItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)]
@@ -82,25 +90,34 @@ function gradientString(rotation, colorA, colorB, position) {
   }, '')
 }
 
-function generateColors() {
-  const colorA = getRandomArrayItem(COLORS)
-  let colorB = getRandomArrayItem(COLORS)
-
-  while (colorB === colorA) {
-    colorB = getRandomArrayItem(COLORS)
+function generateGradient(deg = 0) {
+  const { colorA, colorB, position } = currentGradient
+  if (!colorA || !colorB) {
+    return
   }
 
   gradientElement.style.cssText = gradientString(
-    getRandomArbitrary(0, 360),
+    deg,
     colorA,
     colorB,
-    getRandomArbitrary(35, 65)
+    position
   )
+}
+
+function generateColors() {
+  currentGradient.colorA = getRandomArrayItem(COLORS)
+  currentGradient.colorB = getRandomArrayItem(COLORS)
+  currentGradient.position = getRandomArbitrary(35, 65)
+
+  while (currentGradient.colorB === currentGradient.colorA) {
+    currentGradient.colorB = getRandomArrayItem(COLORS)
+  }
+
+  const complementary = generateComplementaryColor(currentGradient.colorB)
 
   for (let i = 0; i < previewDetailsElements.length; i += 1) {
     const element = previewDetailsElements[i]
-
-    element.style.color = COLORS_TEXT[i % COLORS_TEXT.length].toString()
+    element.style.color = complementary.toString()
   }
 }
 
@@ -159,10 +176,38 @@ function initializeReleases() {
   }
 }
 
+function initializeGradientControl() {
+  function onMove(event) {
+    const pointerX = event.pageX
+    const pointerY = event.pageY
+
+    if (pointerX === undefined || pointerY === undefined) {
+      return
+    }
+
+    const centerX = window.screen.width / 2
+    const centerY = window.screen.height / 2
+
+    console.log(pointerX, pointerY)
+
+    const deg = Math.atan2(
+      pointerY - centerY,
+      pointerX - centerX
+    ) * 180 / Math.PI
+
+    generateGradient(deg)
+  }
+
+  window.addEventListener('mousemove', onMove)
+  window.addEventListener('touchmove', onMove)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeNavigation()
   initializeReleases()
+  initializeGradientControl()
 
   generateAcronym()
   generateColors()
+  generateGradient()
 })

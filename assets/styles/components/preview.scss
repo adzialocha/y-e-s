@@ -5,9 +5,9 @@
 .preview__catalog {
   color: $white;
 
+  cursor: pointer;
+
   font-weight: $font-weight-base;
 
   text-decoration: underline;
-
-  cursor: pointer;
 }
