@@ -27,9 +27,12 @@
     </button>
   </nav>
   <aside class="view" id="view-subscribe">
-    <form>
+    <form class="newsletter" id="newsletter">
       <input class="blue blue--left" type="email" name="email" placeholder="{{ site.locales.email }}" />
       <button class="blue" type="submit">{{ site.locales.subscribe }}</button>
+      <div class="newsletter__thanks">
+        {{ site.locales.thanks }}
+      </div>
     </form>
   </aside>
   <aside class="view" id="view-imprint">

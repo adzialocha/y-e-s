@@ -10,6 +10,7 @@ locales:
   imprint: Imprint
   setup: Setup
   subscribe: Subscribe
+  thanks: Thank you!
 
 # setup
 collections:

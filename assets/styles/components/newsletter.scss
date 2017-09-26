@@ -1,0 +1,16 @@
+.newsletter {
+  .newsletter__thanks {
+    display: none;
+  }
+}
+
+.newsletter--success {
+  input,
+  button {
+    display: none;
+  }
+
+  .newsletter__thanks {
+    display: initial;
+  }
+}

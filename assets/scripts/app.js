@@ -10,13 +10,7 @@ class Color {
   }
 }
 
-function generateComplementaryColor(color) {
-  return new Color(
-    255 - color.red,
-    255 - color.green,
-    255 - color.blue
-  )
-}
+const MAILCHIMP_URL = '//andreasdzialocha.us7.list-manage.com/subscribe/post?u=79c1658d0ccddf704a07d8f95&amp;id=1fd08b7b47&c=?'
 
 const NAVIGATION_ITEMS = [
   'imprint',
@@ -55,8 +49,22 @@ const ACRONYMS = [
   'Yuppy Erectology Syndrome',
 ]
 
+function generateComplementaryColor(color) {
+  return new Color(
+    255 - color.red,
+    255 - color.green,
+    255 - color.blue
+  )
+}
+
+function isValidEMail(str) {
+  const regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+  return regex.test(str)
+}
+
 const gradientElement = document.getElementById('gradient')
 const homeElement = document.getElementById('navigation-releases')
+const newsletterElement = document.getElementById('newsletter')
 const previewDetailsElements = document.getElementsByClassName('preview__details')
 const previewElements = document.getElementsByClassName('preview__catalog')
 const releaseElements = document.getElementsByClassName('release')
@@ -64,6 +72,7 @@ const viewElements = document.getElementsByClassName('view')
 
 let currentNavigationItem
 let currentReleaseItem
+let requestId = 0
 
 const currentGradient = {
   colorA: undefined,
@@ -77,6 +86,28 @@ function getRandomArrayItem(arr) {
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min
+}
+
+function request(url, email, callback) {
+  const name = `_jsonp_${requestId += 1}`
+
+  const scriptElement = document.createElement('script')
+  scriptElement.type = 'text/javascript'
+
+  if (url.match(/\?/)) {
+    scriptElement.src = `${url}&format=jsonp&EMAIL=${email}&callback=${name}`
+  } else {
+    scriptElement.src = `${url}?format=jsonp&EMAIL=${email}&callback=${name}`
+  }
+
+  window[name] = data => {
+    callback.call(window, data)
+    document.getElementsByTagName('head')[0].removeChild(scriptElement)
+    scriptElement = null
+    delete window[name]
+  }
+
+  document.getElementsByTagName('head')[0].appendChild(scriptElement)
 }
 
 function gradientString(rotation, colorA, colorB, position) {
@@ -188,8 +219,6 @@ function initializeGradientControl() {
     const centerX = window.screen.width / 2
     const centerY = window.screen.height / 2
 
-    console.log(pointerX, pointerY)
-
     const deg = Math.atan2(
       pointerY - centerY,
       pointerX - centerX
@@ -202,10 +231,30 @@ function initializeGradientControl() {
   window.addEventListener('touchmove', onMove)
 }
 
+function submitSubscribeForm() {
+  const email = newsletterElement.email.value
+
+  if (!isValidEMail(email)) {
+    return
+  }
+
+  newsletterElement.classList.add('newsletter--success')
+
+  // request(MAILCHIMP_URL, email)
+}
+
+function initializeNewsletter() {
+  newsletterElement.addEventListener('submit', event => {
+    event.preventDefault()
+    submitSubscribeForm()
+  })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeNavigation()
   initializeReleases()
   initializeGradientControl()
+  initializeNewsletter()
 
   generateAcronym()
   generateColors()
