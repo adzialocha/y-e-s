@@ -168,6 +168,7 @@ function initializeNavigation() {
       } else {
         currentNavigationItem = item
         generateColors()
+        generateGradient()
       }
 
       for (let i = 0; i < viewElements.length; i += 1) {
@@ -194,6 +195,7 @@ function initializeReleases() {
       } else {
         currentReleaseItem = catalogItem
         generateColors()
+        generateGradient()
       }
 
       for (let i = 0; i < releaseElements.length; i += 1) {
