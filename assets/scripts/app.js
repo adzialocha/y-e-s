@@ -10,7 +10,7 @@ class Color {
   }
 }
 
-const MAILCHIMP_URL = '//andreasdzialocha.us7.list-manage.com/subscribe/post?u=79c1658d0ccddf704a07d8f95&amp;id=1fd08b7b47&c=?'
+const MAILCHIMP_URL = '//y-e-s.us16.list-manage.com/subscribe/post?u=e682a40c6226c72eba8298735&amp;id=7758ee5d8d&c='
 
 const NAVIGATION_ITEMS = [
   'imprint',
@@ -266,7 +266,7 @@ function submitSubscribeForm() {
 
   newsletterElement.classList.add('newsletter--success')
 
-  // request(MAILCHIMP_URL, email)
+  request(MAILCHIMP_URL, email)
 }
 
 function initializeNewsletter() {
