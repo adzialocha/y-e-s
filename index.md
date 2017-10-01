@@ -27,9 +27,13 @@ layout: default
         {{ release.setup | strip_newlines }}
         <strong>{{ site.locales.details | upcase }}</strong>
         {% for detail in release.details %}
-          <a target="_blank" href="/files/{{ detail }}">{{ detail }}</a>
+          {% if detail contains '://' %}
+            <a target="_blank" href="{{ detail }}">{{ detail }}</a>
+          {% else %}
+            <a target="_blank" href="/files/{{ detail }}">{{ detail }}</a>
+          {% endif %}
         {% endfor %}
-        <a href="/files/{{ release.download }}" class="release__download blue">
+        <a href="{{ release.download }}" class="release__download blue">
           {{ site.locales.download }}
         </a>
       </div>
