@@ -1,6 +1,8 @@
 y-e-s
 ---
 
+Platform for intermedial scores.
+
 ## Setup
 
 ```
