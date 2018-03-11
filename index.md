@@ -11,9 +11,9 @@ layout: default
       <span class="preview__details">
         {{ release.artists | array_to_sentence_string }}
         {{ release.title | upcase }}
-        {{ release.subtitle }}
-        D {{ release.duration }}
-        R {{ release.date | date: '%d.%m.%y' }}
+        {% if release.subtitle != nil %}{{ release.subtitle }}{% endif %}
+        {% if release.duration != nil %}D {{ release.duration }}{% endif %}
+        {% if release.date != nil %}R {{ release.date | date: '%d.%m.%y' }}{% endif %}
       </span>
     </section>
     <section class="release" id="{{ release.catalog }}">
@@ -23,8 +23,10 @@ layout: default
       <div class="release__details">
         <strong>{{ site.locales.about | upcase }}</strong>
         {{ release.content | strip_newlines }}
-        <strong>{{ site.locales.setup | upcase }}</strong>
-        {{ release.setup | strip_newlines }}
+        {% if release.subtitle != nil %}
+          <strong>{{ site.locales.setup | upcase }}</strong>
+          {{ release.setup | strip_newlines }}
+        {% endif %}
         <strong>{{ site.locales.details | upcase }}</strong>
         {% for detail in release.details %}
           {% if detail contains '://' %}
