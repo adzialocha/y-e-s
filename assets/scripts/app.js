@@ -32,6 +32,7 @@ const ACRONYMS = [
   'Yakuza Enemy Squasher',
   'Yale Exodus Service',
   'Yawn Ecstacy Shalom',
+  'Yea Eat Serum',
   'Year End Sale',
   'Yearlong Ecstasy Subordination',
   'Yearly Exotic Shows',
@@ -45,6 +46,7 @@ const ACRONYMS = [
   'Yesterday\'s Eaten Sausage',
   'Yesteryear Exists Sucker',
   'Yiddish Excavation Solemnity',
+  'Yo Eager Stiff',
   'Yo Em Sa',
   'Yobbiest Ever Song',
   'Yoda Entertainment Service',
@@ -53,6 +55,7 @@ const ACRONYMS = [
   'Yodeling Experts Speeddating',
   'Yoemanry Elevation Science',
   'Yoga Eat Shit',
+  'Yoghurt Expeditionary Saponification',
   'Yoni Edge Stroke',
   'York East Scotland',
   'You Eat Shit',
@@ -70,6 +73,7 @@ const ACRONYMS = [
   'Yummy Endless Sausage',
   'Yummy Endless Sex',
   'Yummy Endless Sodomy',
+  'Yuppies Extravagance Shop',
   'Yuppy Erectology Syndrome',
 ]
 
