@@ -10,7 +10,7 @@ duration: "20:00 - 60:00"
 cover_image: YES003_CyberneticGamelanFutureAutomaton.jpg
 details:
   - YES003_CyberneticGamelanFutureAutomaton.pdf
-  - https://cybernetic-gamelan-automaton.herokuapp.com
+  - https://cgfa.andreasdzialocha.com
   - https://www.youtube.com/watch?v=qc2i82y4oS0
 download: https://s3.eu-central-1.amazonaws.com/y-e-s/YES003_CyberneticGamelanFutureAutomaton.zip
 ---
