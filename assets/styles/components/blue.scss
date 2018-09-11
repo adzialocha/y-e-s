@@ -1,3 +1,8 @@
+@keyframes boom {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 .blue {
   display: block;
 
@@ -11,6 +16,12 @@
 
   text-decoration: none;
   text-align: center;
+
+  animation-name: boom;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .blue--left {
