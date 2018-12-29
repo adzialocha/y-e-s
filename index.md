@@ -42,6 +42,3 @@ layout: default
     </section>
   </article>
 {% endfor %}
-<article class="blue">
-  <a href="https://2018.y-e-s.org" target="_blank">Come to our Y-E-S Fest! 29.-30.09. in Berlin!</a>
-</article>
