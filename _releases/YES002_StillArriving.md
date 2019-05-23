@@ -4,7 +4,7 @@ title: still | arriving
 subtitle: for piano and electronics
 date: 2017-11-01
 artists:
-  - Martin Hiendl
+  - Laure M. Hiendl
 setup: piano, laptop, pickup microphone, stereo PA
 duration: "30:00 - 60:00"
 cover_image: YES002_StillArriving.jpg

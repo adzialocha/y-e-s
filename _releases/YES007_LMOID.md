@@ -5,7 +5,7 @@ subtitle: for two pianists and electronics
 date: 2018-04-01
 artists:
   - Sam Yulsman
-  - Martin Hiendl
+  - Laure M. Hiendl
 setup: 2 pianos, 2 pickup microphones, 2 laptops, 2 interfaces, PA
 duration: "60:00"
 cover_image: YES007_LMOID.jpg
