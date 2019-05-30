@@ -19,6 +19,7 @@
 <body>
   <div id="gradient" class="gradient"></div>
   <nav class="navigation">
+    <div class="navigation__left">
     <button class="navigation__item" id="navigation-releases">Y-E-S</button>
     <button class="navigation__item" id="navigation-subscribe">
       {{ site.locales.subscribe }}
@@ -26,10 +27,19 @@
     <button class="navigation__item" id="navigation-imprint">
       {{ site.locales.imprint }}
     </button>
+    </div>
+    <div class="navigation__right">
+      <button class="navigation__item blue" id="display-mode-list">
+        {{ site.locales.display_mode.list }}
+      </button>
+      <button class="navigation__item blue" id="display-mode-cover">
+        {{ site.locales.display_mode.cover }}
+      </button>
+    </div>
   </nav>
   <aside class="view" id="view-subscribe">
     <form class="newsletter" id="newsletter">
-      <input class="blue blue--left" type="email" name="email" placeholder="{{ site.locales.email }}" />
+      <input class="newsletter__input blue blue--left" type="email" name="email" placeholder="{{ site.locales.email }}" />
       <button class="blue" type="submit">{{ site.locales.subscribe }}</button>
       <div class="newsletter__thanks">
         {{ site.locales.thanks }}

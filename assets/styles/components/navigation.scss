@@ -1,7 +1,29 @@
 .navigation {
-  display: inline;
+  display: flex;
+
+  justify-content: space-between;
 }
 
 .navigation__item {
   text-decoration: underline;
+
+  + .navigation__item {
+    margin-left: 3px;
+  }
+}
+
+.navigation__right {
+  display: flex;
+
+  .navigation__item {
+    + .navigation__item {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .navigation {
+    display: inline;
+  }
 }

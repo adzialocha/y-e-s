@@ -1,0 +1,34 @@
+// .release-detail {
+// }
+
+.release-detail__details {
+  padding-left: 5px;
+}
+
+.release-detail__download {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.release-detail__cover {
+  width: 300px;
+  height: 300px;
+}
+
+@media only screen and (max-width: 560px) {
+  .release-detail__details {
+    padding-left: 0;
+  }
+
+  .release-detail__download {
+    margin: 5px;
+  }
+
+  .release-detail__cover {
+    margin-bottom: 5px;
+
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+}

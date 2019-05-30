@@ -12,10 +12,17 @@ class Color {
 
 const MAILCHIMP_URL = '//y-e-s.us16.list-manage.com/subscribe/post?u=e682a40c6226c72eba8298735&amp;id=7758ee5d8d&c='
 
+const DEFAULT_DISPLAY_MODE = 'list'
+
+const DISPLAY_MODES = [
+  'list',
+  'cover',
+]
+
 const NAVIGATION_ITEMS = [
-  'imprint',
   'releases',
   'subscribe',
+  'imprint',
 ]
 
 const COLORS = [
@@ -93,11 +100,14 @@ function isValidEMail(str) {
 const gradientElement = document.getElementById('gradient')
 const homeElement = document.getElementById('navigation-releases')
 const newsletterElement = document.getElementById('newsletter')
-const previewDetailsElements = document.getElementsByClassName('preview__details')
-const previewElements = document.getElementsByClassName('preview__catalog')
-const releaseElements = document.getElementsByClassName('release')
+const releaseListElement = document.getElementById('release-list')
 const viewElements = document.getElementsByClassName('view')
 
+const detailsElements = document.getElementsByClassName('release-preview__details')
+const releaseElements = document.getElementsByClassName('release')
+const toggleElements = document.querySelectorAll('[data-toggle]')
+
+let currentDisplayMode
 let currentNavigationItem
 let currentReleaseItem
 let requestId = 0
@@ -174,8 +184,8 @@ function generateColors() {
 
   const complementary = generateComplementaryColor(currentGradient.colorB)
 
-  for (let i = 0; i < previewDetailsElements.length; i += 1) {
-    const element = previewDetailsElements[i]
+  for (let i = 0; i < detailsElements.length; i += 1) {
+    const element = detailsElements[i]
     element.style.color = complementary.toString()
   }
 }
@@ -210,27 +220,61 @@ function initializeNavigation() {
   })
 }
 
-function initializeReleases() {
-  for (let i = 0; i < previewElements.length; i += 1) {
-    const preview = previewElements[i]
-    const catalogItem = preview.id.split('-')[1]
+function initializeDisplayModes() {
+  currentDisplayMode = DEFAULT_DISPLAY_MODE
+  releaseListElement.classList.add(`release-list--${currentDisplayMode}`)
 
-    preview.addEventListener('click', event => {
+  DISPLAY_MODES.forEach(item => {
+    const element = document.getElementById(`display-mode-${item}`)
+
+    element.addEventListener('click', event => {
       event.preventDefault()
 
-      if (currentReleaseItem === catalogItem) {
-        currentReleaseItem = undefined
-      } else {
-        currentReleaseItem = catalogItem
-        generateColors()
-        generateGradient()
+      if (currentDisplayMode !== item) {
+        releaseListElement.classList.remove(`release-list--${currentDisplayMode}`)
+        releaseListElement.classList.add(`release-list--${item}`)
+
+        currentDisplayMode = item
+      }
+    })
+  })
+}
+
+function initializeReleases() {
+  const releaseIdElems = {};
+
+  for (let i = 0; i < releaseElements.length; i += 1) {
+    releaseIdElems[releaseElements[i].id] = releaseElements[i];
+  }
+
+  for (let i = 0; i < toggleElements.length; i += 1) {
+    const toggleElem = toggleElements[i]
+
+    toggleElem.addEventListener('click', event => {
+      event.preventDefault()
+
+      const id = toggleElem.dataset.toggleId
+      const displayMode = toggleElem.dataset.toggle
+
+      if (displayMode !== currentDisplayMode) {
+        return
       }
 
-      for (let i = 0; i < releaseElements.length; i += 1) {
-        releaseElements[i].classList.remove('release--visible')
+      if (id in releaseIdElems) {
+        if (currentReleaseItem === id) {
+          currentReleaseItem = undefined
+        } else {
+          currentReleaseItem = id
+          generateColors()
+          generateGradient()
+        }
 
-        if (releaseElements[i].id === currentReleaseItem) {
-          releaseElements[i].classList.add('release--visible')
+        for (let i = 0; i < releaseElements.length; i += 1) {
+          releaseElements[i].classList.remove('release--visible')
+
+          if (releaseElements[i].id === currentReleaseItem) {
+            releaseElements[i].classList.add('release--visible')
+          }
         }
       }
     })
@@ -285,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeReleases()
   initializeGradientControl()
   initializeNewsletter()
+  initializeDisplayModes()
 
   generateAcronym()
   generateColors()

@@ -1,0 +1,27 @@
+.release-preview {
+  display: inline;
+}
+
+.release-preview__title {
+  background-color: rgba($white, .2);
+}
+
+.release-preview--fest {
+  .release-preview__title {
+    background-color: rgba($bisque, .5);
+  }
+}
+
+.release-preview__catalog {
+  color: $white;
+
+  font-weight: $font-weight-base;
+}
+
+.release-list--list {
+  .release-preview__catalog {
+    cursor: pointer;
+
+    text-decoration: underline;
+  }
+}

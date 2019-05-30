@@ -11,6 +11,9 @@ locales:
   setup: Setup
   subscribe: Subscribe
   thanks: Thank you!
+  display_mode:
+    list: List
+    cover: Cover
 
 # setup
 collections:
