@@ -72,7 +72,7 @@ const ACRONYMS = [
   'Yobbiest Ever Song',
   'Yoda Entertainment Service',
   'Yoda\'s Easter Salutation',
-  'Yodelers Electric Sentimentalism',
+  'Yodeler\'s Electric Sentimentalism',
   'Yodeling Experts Speeddating',
   'Yoemanry Elevation Science',
   'Yoga Eat Shit',
