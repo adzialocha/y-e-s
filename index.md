@@ -23,21 +23,25 @@ layout: default
       <div class="release__details">
         <strong>{{ site.locales.about | upcase }}</strong>
         {{ release.content | strip_newlines }}
-        {% if release.subtitle != nil %}
+        {% if release.setup != nil %}
           <strong>{{ site.locales.setup | upcase }}</strong>
           {{ release.setup | strip_newlines }}
         {% endif %}
-        <strong>{{ site.locales.details | upcase }}</strong>
-        {% for detail in release.details %}
-          {% if detail contains '://' %}
-            <a target="_blank" href="{{ detail }}">{{ detail }}</a>
-          {% else %}
-            <a target="_blank" href="/files/{{ detail }}">{{ detail }}</a>
-          {% endif %}
-        {% endfor %}
-        <a href="{{ release.download }}" class="release__download blue">
-          {{ site.locales.download }}
-        </a>
+        {% if release.details != nil %}
+          <strong>{{ site.locales.details | upcase }}</strong>
+          {% for detail in release.details %}
+            {% if detail contains '://' %}
+              <a target="_blank" href="{{ detail }}">{{ detail }}</a>
+            {% else %}
+              <a target="_blank" href="/files/{{ detail }}">{{ detail }}</a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if release.download != nil %}
+          <a href="{{ release.download }}" class="release__download blue">
+            {{ site.locales.download }}
+          </a>
+        {% endif %}
       </div>
     </section>
   </article>
