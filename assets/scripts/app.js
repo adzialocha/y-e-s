@@ -22,7 +22,7 @@ const DISPLAY_MODES = [
 const NAVIGATION_ITEMS = [
   'releases',
   'subscribe',
-  'imprint',
+  'about',
 ]
 
 const COLORS = [
@@ -32,26 +32,40 @@ const COLORS = [
 ]
 
 const ACRONYMS = [
+  'Y Earing Slit',
+  'Yabbering Entelodont Society',
   'Yacht Etching Society',
   'Yacht Extreme Sailing',
   'Yah Ex Shoes',
   'Yahoo Email Subscription',
   'Yakuza Enemy Squasher',
   'Yale Exodus Service',
+  'Yam Eating Session',
+  'Yangtze Entering Shanghai',
+  'Yankee Easter Sundown',
+  'Yanking Excepting Sabbath',
+  'Yard Egg Salad',
   'Yawn Ecstacy Shalom',
   'Yea Eat Serum',
   'Year End Sale',
+  'Yearbook Extra Salty',
   'Yearlong Ecstasy Subordination',
   'Yearly Exotic Shows',
   'Yearning Every Saturday',
   'Yeast Elicits Sugar',
+  'Yeasty Erratic Soliloquy',
+  'Yeh Extremists Sing',
+  'Yelling Episodic Synopsis',
   'Yellow Egg Sauce',
   'Yellow Entropic Sessions',
+  'Yellowstone Excavation Syndicate',
   'Yelp Eek Shit',
+  'Yelp Eel Service',
   'Yes Export Service',
   'Yesterday Ended Slow',
   'Yesterday\'s Eaten Sausage',
   'Yesteryear Exists Sucker',
+  'Yesteryear Eye Strobo',
   'Yiddish Excavation Solemnity',
   'Yo Eager Stiff',
   'Yo Em Sa',
@@ -63,19 +77,26 @@ const ACRONYMS = [
   'Yoemanry Elevation Science',
   'Yoga Eat Shit',
   'Yoghurt Expeditionary Saponification',
+  'Yoghurt Expired Sadly',
+  'Yogic Entropic Shivering',
+  'Yoke Error Shitstorm',
   'Yoni Edge Stroke',
   'York East Scotland',
   'You Eat Shit',
   'You Expecting Something?',
+  'You\'d Easily Safari',
   'Young Educated Socialists',
   'Young Energetic Scores',
+  'Youngster Exacerbates Sabotage',
   'Your Ear Sucks',
   'Your Ears Suck',
   'Your Easy Sex',
   'Your Edition Solitude',
+  'Your Eminence Surprises',
   'Your Entertainment Service',
   'Your Eskalations Stufe',
   'Your Eyes Stink',
+  'Youth Eat Seniors',
   'Youth Extinction Strobotomy',
   'Yummy Endless Sausage',
   'Yummy Endless Sex',
@@ -97,6 +118,7 @@ function isValidEMail(str) {
   return regex.test(str)
 }
 
+const acronymElements = document.getElementsByClassName('acronym')
 const gradientElement = document.getElementById('gradient')
 const homeElement = document.getElementById('navigation-releases')
 const newsletterElement = document.getElementById('newsletter')
@@ -192,6 +214,18 @@ function generateColors() {
 
 function generateAcronym() {
   homeElement.innerText = getRandomArrayItem(ACRONYMS)
+
+  for (let i = 0; i < acronymElements.length; i += 1) {
+    acronymElements[i].innerText = getRandomArrayItem(ACRONYMS)
+  }
+}
+
+function initializeAcronymGeneration() {
+  generateAcronym()
+
+  window.setInterval(() => {
+    generateAcronym()
+  }, 30 * 1000)
 }
 
 function initializeNavigation() {
@@ -330,8 +364,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeGradientControl()
   initializeNewsletter()
   initializeDisplayModes()
+  initializeAcronymGeneration()
+  // initializeSpaceship()
 
-  generateAcronym()
   generateColors()
   generateGradient()
 })

@@ -1,19 +1,18 @@
 # your essential settings
 title: Y-E-S
 email: mail@y-e-s.org
-description: Y-E-S is Neo Hülcker, Kaj Duncan David, Stellan Veloce, Andreas Dzialocha, Laure M. Hiendl
 locales:
   about: About
   details: Details
   download: Download
   email: Your email address
-  imprint: Imprint
+  about: About
   setup: Setup
   subscribe: Subscribe
   thanks: Thank you!
   display_mode:
-    list: List
-    cover: Cover
+    list: ▤
+    cover: ⧉
 
 # setup
 collections:

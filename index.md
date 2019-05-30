@@ -40,7 +40,7 @@ layout: default
             {% endfor %}
           {% endif %}
           {% if release.download != nil %}
-            <a href="{{ release.download }}" class="release-detail__download blue">
+            <a href="{{ release.download }}" class="release-detail__download button blue">
               {{ site.locales.download }}
             </a>
           {% endif %}

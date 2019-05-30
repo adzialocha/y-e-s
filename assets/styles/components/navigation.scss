@@ -16,6 +16,19 @@
   display: flex;
 
   .navigation__item {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background-color: rgba($white, .3);
+
+    font-style: initial;
+    font-weight: $font-weight-bold;
+
+    text-align: center;
+    text-decoration: initial;
+
     + .navigation__item {
       margin-left: 10px;
     }
