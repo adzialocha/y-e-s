@@ -1,8 +1,3 @@
-// @keyframes boom {
-//   0% { opacity: 0; }
-//   50% { opacity: 1; }
-// }
-
 .blue {
   display: block;
 
@@ -12,19 +7,12 @@
 
   background-color: rgba($white, .3);
 
-  // border: $bisque dashed 2px;
   box-shadow: rgba($black, .8) 5px 5px 5px;
 
   font-weight: $font-weight-base;
 
   text-decoration: none;
   text-align: center;
-
-  // animation-name: boom;
-  // animation-duration: 200ms;
-  // animation-timing-function: linear;
-  // animation-iteration-count: infinite;
-  // animation-direction: alternate;
 }
 
 .blue--left {

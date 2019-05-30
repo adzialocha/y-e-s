@@ -32,7 +32,7 @@ const COLORS = [
 ]
 
 const ACRONYMS = [
-  'Y Earing Slit',
+  'Y Earring Slit',
   'Yabbering Entelodont Society',
   'Yacht Etching Society',
   'Yacht Extreme Sailing',
@@ -60,12 +60,12 @@ const ACRONYMS = [
   'Yellow Entropic Sessions',
   'Yellowstone Excavation Syndicate',
   'Yelp Eek Shit',
-  'Yelp Eel Service',
   'Yes Export Service',
   'Yesterday Ended Slow',
   'Yesterday\'s Eaten Sausage',
   'Yesteryear Exists Sucker',
   'Yesteryear Eye Strobo',
+  'Yeti Election Services',
   'Yiddish Excavation Solemnity',
   'Yo Eager Stiff',
   'Yo Em Sa',
@@ -88,7 +88,6 @@ const ACRONYMS = [
   'Young Educated Socialists',
   'Young Energetic Scores',
   'Youngster Exacerbates Sabotage',
-  'Your Ear Sucks',
   'Your Ears Suck',
   'Your Easy Sex',
   'Your Edition Solitude',
@@ -96,10 +95,8 @@ const ACRONYMS = [
   'Your Entertainment Service',
   'Your Eskalations Stufe',
   'Your Eyes Stink',
-  'Youth Eat Seniors',
+  'Youth Eats Seniors',
   'Youth Extinction Strobotomy',
-  'Yummy Endless Sausage',
-  'Yummy Endless Sex',
   'Yummy Endless Sodomy',
   'Yuppies Extravagance Shop',
   'Yuppy Erectology Syndrome',
@@ -257,6 +254,7 @@ function initializeNavigation() {
 function initializeDisplayModes() {
   currentDisplayMode = DEFAULT_DISPLAY_MODE
   releaseListElement.classList.add(`release-list--${currentDisplayMode}`)
+  document.body.classList.add(`display-mode-${currentDisplayMode}`)
 
   DISPLAY_MODES.forEach(item => {
     const element = document.getElementById(`display-mode-${item}`)
@@ -266,7 +264,9 @@ function initializeDisplayModes() {
 
       if (currentDisplayMode !== item) {
         releaseListElement.classList.remove(`release-list--${currentDisplayMode}`)
+        document.body.classList.remove(`display-mode-${currentDisplayMode}`)
         releaseListElement.classList.add(`release-list--${item}`)
+        document.body.classList.add(`display-mode-${item}`)
 
         currentDisplayMode = item
       }

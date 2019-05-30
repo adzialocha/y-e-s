@@ -39,6 +39,12 @@
   }
 
   .release--visible {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+
+    flex: 1;
+
     .release-preview {
       display: inline;
     }
@@ -49,6 +55,11 @@
 
     .release-detail__cover-container {
       display: block;
+    }
+
+    .release-detail__cover {
+      width: 300px;
+      height: 300px;
     }
 
     .release-detail__content {
