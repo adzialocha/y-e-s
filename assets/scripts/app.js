@@ -12,8 +12,6 @@ class Color {
 
 const MAILCHIMP_URL = '//y-e-s.us16.list-manage.com/subscribe/post?u=e682a40c6226c72eba8298735&amp;id=7758ee5d8d&c='
 
-const ACRONYM_GENERATION_FREQUENCY = 30 * 1000
-
 const DEFAULT_DISPLAY_MODE = 'list'
 
 const DISPLAY_MODES = [
@@ -203,18 +201,10 @@ function generateColors() {
   }
 }
 
-function generateAcronyms() {
+function initializeAcronymGeneration() {
   for (let i = 0; i < acronymElements.length; i += 1) {
     acronymElements[i].innerText = getRandomArrayItem(ACRONYMS)
   }
-}
-
-function initializeAcronymGeneration() {
-  generateAcronyms()
-
-  window.setInterval(() => {
-    generateAcronyms()
-  }, ACRONYM_GENERATION_FREQUENCY)
 }
 
 function initializeDisplayModes() {
