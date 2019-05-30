@@ -7,10 +7,7 @@
   flex-wrap: wrap;
 
   .release {
-    flex: 0;
-
-    width: 500px;
-    height: 500px;
+    width: 50%;
   }
 
   .release-preview {
@@ -18,16 +15,19 @@
   }
 
   .release-detail {
-    display: inline;
+    display: block;
   }
 
   .release-detail__cover-container {
-    display: inline;
+    display: block;
+
+    font-size: 0;
   }
 
   .release-detail__cover {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    min-width: 250px;
+    height: auto;
   }
 
   .release-detail__content {
@@ -46,7 +46,7 @@
     flex: 1;
 
     .release-preview {
-      display: inline;
+      display: block;
     }
 
     .release-detail {
@@ -71,16 +71,6 @@
 @media only screen and (max-width: 560px) {
   .release-list--cover {
     display: block;
-
-    .release {
-      width: auto;
-      height: auto;
-    }
-
-    .release-detail__cover {
-      width: 100%;
-      height: auto;
-    }
 
     .release--visible {
       .release-detail {

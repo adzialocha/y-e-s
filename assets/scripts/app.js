@@ -273,10 +273,13 @@ function initializeReleases() {
         }
 
         if (currentReleaseItem && ('scrollIntoView' in releaseIdElems[id])) {
-          releaseIdElems[id].scrollIntoView({
-            alignToTop: true,
-            behavior: 'smooth',
-          })
+          releaseIdElems[id]
+            .querySelector('.release-preview__catalog')
+            .scrollIntoView({
+              block: 'start',
+              inline: 'nearest',
+              behavior: 'smooth',
+            })
         }
       }
     })
