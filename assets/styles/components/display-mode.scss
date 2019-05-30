@@ -9,3 +9,10 @@ body.display-mode-cover {
     background-color: rgba($white, 0.8);
   }
 }
+
+body.display-mode-hidden {
+  #display-mode-list,
+  #display-mode-cover {
+    display: none;
+  }
+}

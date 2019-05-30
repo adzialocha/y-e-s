@@ -12,17 +12,13 @@ class Color {
 
 const MAILCHIMP_URL = '//y-e-s.us16.list-manage.com/subscribe/post?u=e682a40c6226c72eba8298735&amp;id=7758ee5d8d&c='
 
+const ACRONYM_GENERATION_FREQUENCY = 30 * 1000
+
 const DEFAULT_DISPLAY_MODE = 'list'
 
 const DISPLAY_MODES = [
   'list',
   'cover',
-]
-
-const NAVIGATION_ITEMS = [
-  'releases',
-  'subscribe',
-  'about',
 ]
 
 const COLORS = [
@@ -117,7 +113,6 @@ function isValidEMail(str) {
 
 const acronymElements = document.getElementsByClassName('acronym')
 const gradientElement = document.getElementById('gradient')
-const homeElement = document.getElementById('navigation-releases')
 const newsletterElement = document.getElementById('newsletter')
 const releaseListElement = document.getElementById('release-list')
 const viewElements = document.getElementsByClassName('view')
@@ -127,7 +122,6 @@ const releaseElements = document.getElementsByClassName('release')
 const toggleElements = document.querySelectorAll('[data-toggle]')
 
 let currentDisplayMode
-let currentNavigationItem
 let currentReleaseItem
 let requestId = 0
 
@@ -209,49 +203,26 @@ function generateColors() {
   }
 }
 
-function generateAcronym() {
-  homeElement.innerText = getRandomArrayItem(ACRONYMS)
-
+function generateAcronyms() {
   for (let i = 0; i < acronymElements.length; i += 1) {
     acronymElements[i].innerText = getRandomArrayItem(ACRONYMS)
   }
 }
 
 function initializeAcronymGeneration() {
-  generateAcronym()
+  generateAcronyms()
 
   window.setInterval(() => {
-    generateAcronym()
-  }, 30 * 1000)
-}
-
-function initializeNavigation() {
-  NAVIGATION_ITEMS.forEach(item => {
-    const element = document.getElementById(`navigation-${item}`)
-
-    element.addEventListener('click', event => {
-      event.preventDefault()
-
-      if (currentNavigationItem === item) {
-        currentNavigationItem = undefined
-      } else {
-        currentNavigationItem = item
-        generateColors()
-        generateGradient()
-      }
-
-      for (let i = 0; i < viewElements.length; i += 1) {
-        viewElements[i].classList.remove('view--visible')
-
-        if (viewElements[i].id === `view-${currentNavigationItem}`) {
-          viewElements[i].classList.add('view--visible')
-        }
-      }
-    })
-  })
+    generateAcronyms()
+  }, ACRONYM_GENERATION_FREQUENCY)
 }
 
 function initializeDisplayModes() {
+  if (!releaseListElement) {
+    document.body.classList.add('display-mode-hidden')
+    return
+  }
+
   currentDisplayMode = DEFAULT_DISPLAY_MODE
   releaseListElement.classList.add(`release-list--${currentDisplayMode}`)
   document.body.classList.add(`display-mode-${currentDisplayMode}`)
@@ -310,6 +281,13 @@ function initializeReleases() {
             releaseElements[i].classList.add('release--visible')
           }
         }
+
+        if (currentReleaseItem && ('scrollIntoView' in releaseIdElems[id])) {
+          releaseIdElems[id].scrollIntoView({
+            alignToTop: true,
+            behavior: 'smooth',
+          })
+        }
       }
     })
   }
@@ -352,6 +330,10 @@ function submitSubscribeForm() {
 }
 
 function initializeNewsletter() {
+  if (!newsletterElement) {
+    return
+  }
+
   newsletterElement.addEventListener('submit', event => {
     event.preventDefault()
     submitSubscribeForm()
@@ -359,7 +341,6 @@ function initializeNewsletter() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initializeNavigation()
   initializeReleases()
   initializeGradientControl()
   initializeNewsletter()
