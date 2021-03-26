@@ -1,6 +1,6 @@
 ---
 catalog: YES#17
-title: Coreografia Estudo #1
+title: "Coreografia Estudo #1"
 subtitle:
 date: 2021-03-19
 artists:
