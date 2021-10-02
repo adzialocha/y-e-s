@@ -10,6 +10,7 @@ duration: "00:45"
 cover_image: YES016_WarmUp.jpg
 details:
   - YES016_WarmUp.pdf
+  - https://vimeo.com/590464254
   - https://vimeo.com/279010802
 download: https://s3.eu-central-1.amazonaws.com/y-e-s/YES016_WarmUp.zip
 ---
